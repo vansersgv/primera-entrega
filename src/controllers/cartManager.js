@@ -1,4 +1,74 @@
-import { promises as fs } from 'fs'
+import { promises as fs } from 'fs';
+
+export class CartManager {
+    constructor(dataFilePath) {
+        this.carts = [];
+        this.dataFilePath = dataFilePath;
+        this.loadCarts();
+        this.nextCartId = 1; // Inicializa el contador de identificadores únicos para carritos
+    }
+
+    async createCart() {
+        const newCart = {
+            id: this.getNextCartId(),
+            products: []
+        };
+        this.carts.push(newCart);
+
+        await this.saveCarts();
+
+        return newCart;
+    }
+
+    async loadCarts() {
+        try {
+            const existingCarts = await fs.readFile(this.dataFilePath, 'utf-8');
+            this.carts = JSON.parse(existingCarts);
+        } catch (error) {
+            this.carts = [];
+        }
+    }
+
+    async saveCarts() {
+        await fs.writeFile(this.dataFilePath, JSON.stringify(this.carts, null, 2));
+    }
+
+    getNextCartId() {
+        return this.nextCartId++;
+    }
+
+    async getCart(cartId) {
+        return this.carts.find(cart => cart.id === cartId);
+    }
+
+    async addProductToCart(cartId, productId, quantity = 1) {
+        const cart = await this.getCart(cartId);
+
+        if (!cart) {
+            throw new Error('Carrito no encontrado');
+        }
+
+        const existingProduct = cart.products.find(product => product.product === productId);
+
+        if (existingProduct) {
+            existingProduct.quantity += quantity;
+        } else {
+            cart.products.push({ product: productId, quantity });
+        }
+
+        await this.saveCarts();
+
+        return cart;
+    }
+}
+
+export default CartManager;
+
+
+
+
+
+/*import { promises as fs } from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
 export class CartManager {
@@ -52,5 +122,5 @@ export class CartManager {
     }
 }
 
-export default CartManager
+export default CartManager*/
 
