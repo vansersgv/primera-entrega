@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+/*import { promises as fs } from 'fs';
 
 export class ProductManager {
     constructor(dataFilePath) {
@@ -85,11 +85,11 @@ export class ProductManager {
     }
 }
 
-export default ProductManager;
+export default ProductManager;*/
 
 
-/*import { promises as fs } from 'fs'
-import { as uuid } from 'uuid'
+import { promises as fs } from 'fs'
+import { v4 as uuidv4 } from 'uuid'
 
 export class ProductManager {
     constructor(dataFilePath) {
@@ -176,6 +176,6 @@ export class ProductManager {
     }
 }
 
-export default ProductManager*/
+export default ProductManager
 
 

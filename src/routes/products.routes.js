@@ -1,4 +1,4 @@
-import { Router } from 'express';
+/*import { Router } from 'express';
 import { ProductManager } from '../controllers/productManager.js';
 
 const productManager = new ProductManager('src/models/products.json');
@@ -54,13 +54,13 @@ routerProd.delete('/:pid', async (req, res) => {
     return response;
 });
 
-export default routerProd;
+export default routerProd;*/
 
 
 
 
 
-/*import { Router } from 'express'
+import { Router } from 'express'
 import { ProductManager } from '../controllers/productManager.js'
 
 const productManager = new ProductManager('src/models/products.json')
@@ -117,4 +117,4 @@ routerProd.delete('/:pid', async (req, res) => {
     return response
 })
 
-export default routerProd*/
+export default routerProd

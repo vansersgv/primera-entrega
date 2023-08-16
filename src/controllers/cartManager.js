@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+/*import { promises as fs } from 'fs';
 
 export class CartManager {
     constructor(dataFilePath) {
@@ -62,13 +62,13 @@ export class CartManager {
     }
 }
 
-export default CartManager;
+export default CartManager;*/
 
 
 
 
 
-/*import { promises as fs } from 'fs'
+import { promises as fs } from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
 export class CartManager {
@@ -122,5 +122,5 @@ export class CartManager {
     }
 }
 
-export default CartManager*/
+export default CartManager
 
